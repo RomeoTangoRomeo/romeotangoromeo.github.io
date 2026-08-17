@@ -1,0 +1,137 @@
+/* ===========================================================
+   Cottage Garden — global styles & design tokens
+   Palette (5 core colors + neutrals):
+     parchment  #F4ECD8  soil #3A2E23  terracotta #BE5B3E
+     sage       #6E7B52  wheat #D6A24A
+   Fonts: Fraunces (headings / serif) + Karla (body / sans)
+   =========================================================== */
+
+:root {
+  --parchment: #f4ecd8;
+  --parchment-deep: #ece0c4;
+  --paper-line: #e0d2b0;
+  --soil: #3a2e23;
+  --soil-soft: #6f5c47;
+  --terracotta: #be5b3e;
+  --terracotta-deep: #9e4730;
+  --sage: #6e7b52;
+  --sage-deep: #4f5a3a;
+  --wheat: #d6a24a;
+
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Karla', system-ui, -apple-system, sans-serif;
+
+  --radius: 14px;
+  --shadow-soft: 0 18px 40px -24px rgba(58, 46, 35, 0.55);
+  --max-w: 1080px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.bg-parchment,
+body {
+  background-color: var(--parchment);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--soil);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  /* soft botanical paper texture */
+  background-image:
+    radial-gradient(rgba(110, 123, 82, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(190, 91, 62, 0.04) 1px, transparent 1px);
+  background-size: 22px 22px, 22px 22px;
+  background-position: 0 0, 11px 11px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  color: var(--soil);
+  font-weight: 600;
+  line-height: 1.12;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--terracotta-deep);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+::selection {
+  background: var(--wheat);
+  color: var(--soil);
+}
+
+:focus-visible {
+  outline: 3px solid var(--sage);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* Section eyebrow label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--sage-deep);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--sage);
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

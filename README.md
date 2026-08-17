@@ -1,2 +1,4 @@
 # RomeoTangoRomeo.github.io
-About Me
+# Robert Rios
+
+My first Angular SPA with components, interpolation, databinding, and structural directives.
