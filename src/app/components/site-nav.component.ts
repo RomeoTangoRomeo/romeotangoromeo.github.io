@@ -174,20 +174,38 @@ export class SiteNavComponent {
   // Space-safe URL for Angular assets
   resumeUrl = 'assets/Rios-Robert-Java-Dev.pdf';
 
+  /**
+   * Safe URL for the resume PDF to be used in the iframe.
+   */
   safeUrl: SafeResourceUrl;
+  /**
+   * Constructs the SiteNavComponent and initializes the safe URL for the resume PDF.
+   * @param sanitizer {DomSanitizer} Angular service for bypassing security and trusting resource URLs.
+   */
   constructor(private sanitizer: DomSanitizer) {
     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.resumeUrl);
   }
   resumeOpen = signal(false);
   
+  /**
+   *   Opens the resume modal by setting the resumeOpen signal to true.
+   */
   openResume() {
     this.resumeOpen.set(true);
   }
 
+  /**
+   *   Closes the resume modal by setting the resumeOpen signal to false.
+   */
   closeResume() {
     this.resumeOpen.set(false);
   }
 
+  /**
+   * Handles the escape key press to close the resume modal if it is open.
+   * @param {KeyboardEvent} event The keyboard event triggered by pressing the escape key.
+   * @returns this.closeResume() if-and-only-if the resume modal is open.
+   */
   @HostListener('document:keydown.escape', ['$event'])
   onEscapeKey(event: Event): void {
     if (!this.resumeOpen()) {
