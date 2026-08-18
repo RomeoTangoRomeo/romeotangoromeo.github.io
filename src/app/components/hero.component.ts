@@ -13,7 +13,7 @@ import { Component, signal } from '@angular/core';
             where I let my ideas grow.
           </h1>
           <p class="lede">
-            I’m Robert—a software developer who enjoys tending to more than just code. When I’m not building or learning something technical, you’ll usually find me working in the garden, following the markets, unwinding with a videogame, or in the backyard playing with my kids. I like understanding how things work, improving them a little at a time, and staying curious about whatever catches my attention next.
+            I&rsquo;m Robert—a software developer who enjoys tending to more than just code. When I&rsquo;m not building or learning something technical, you&rsquo;ll usually find me working in the garden, following the markets, unwinding with a videogame, or in the backyard playing with my kids. I like understanding how things work, improving them a little at a time, and staying curious about whatever catches my attention next.
           </p>
 
           <div class="actions">
