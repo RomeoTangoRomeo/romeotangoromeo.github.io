@@ -17,7 +17,7 @@ interface Interest {
         <div class="head">          
           <h2>I like tending to things &mdash; gardens, ideas, and everything in between.</h2>
           <p>
-          I'm a software developer based out of Kentucky with 7+ years of experience designing, maintaining and supporting enterprise web applications. I've got extensive experience with Java, Spring MVC, JSP, SQL, Git, Maven, and automated testing. I enjoy learning how things are done and exploring to see whether or not I can improve upon them through hands-on implementatation. The best way to learn something is to get your hands a little dirty!
+          I'm a software developer based out of Kentucky with 7+ years of experience designing, maintaining and supporting enterprise web applications. I've got extensive experience with Java, Spring MVC, JSP, SQL, Git, Maven, and automated testing. I enjoy learning how things are done and exploring to see whether or not I can improve upon them through hands-on implementatation. The best way to learn something new is to roll up your sleeves and get your hands a little dirty!
           </p>
         </div>
 
