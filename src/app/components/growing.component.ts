@@ -40,15 +40,35 @@ interface Project {
               </div>
               <h3>{{ p.name }}</h3>
               <p>{{ p.blurb }}</p>
-              <a *ngIf="p.link" [href]="p.link" class="bed-link">
-                Have a look
-                <span aria-hidden="true">&rarr;</span>
-              </a>
+              @if (p.link) {
+                <a
+                  [href]="p.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  (click)="openLink($event, p.link)"
+                >
+                  View Project
+                </a>
+              }
             </li>
-          </ul>
+          </ul>          
         </div>
       </div>
     </section>
+
+    @if (selectedImage) {
+  <div class="image-modal-backdrop" (click)="closeModal()">
+    <div class="image-modal-content" (click)="$event.stopPropagation()">
+      <button class="image-modal-close-button" (click)="closeModal()">×</button>
+
+      <img
+        [src]="selectedImage"
+        alt="Image preview"
+      />
+    </div>
+  </div>
+}
+          
   `,
   styles: [
     `
@@ -141,6 +161,50 @@ interface Project {
           display: none;
         }
       }
+
+      .image-modal-backdrop {
+        position: fixed;
+        inset: 0;
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 1000;
+      }
+
+      .image-modal-content {
+        position: relative;
+      
+        max-width: 90vw;
+        max-height: 90vh;
+      
+        padding: 1rem;
+        background: white;
+        border-radius: 8px;
+      }
+      
+      .image-modal-content img {
+        display: block;
+      
+        max-width: 85vw;
+        max-height: 80vh;
+      
+        object-fit: contain;
+      }
+      
+      .image-modal-close-button {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+      
+        border: none;
+        background: transparent;
+      
+        font-size: 2rem;
+        cursor: pointer;
+      }
     `,
   ],
 })
@@ -189,4 +253,36 @@ export class GrowingComponent {
         "Kicking around ideas on how I can potentially expand beyond a strictly momentum-based strat to see if I can capture longer term trends to dampen portfolio volatity.",
     },
   ];
+
+  selectedImage: string | null = null;
+
+  /**
+   * Checks if the given URL points to an image file.
+   *
+   * @param url The URL to check.
+   * @returns True if the URL points to an image file, false otherwise.
+   */
+  isImage(url: string): boolean {
+    if (!url) {
+      return false;
+    }
+
+    return /\.(png|jpe?g|gif|bmp|webp|svg)$/i.test(url);
+  }
+
+  /**
+   * Opens the link in a new tab if it's not an image, or displays the image in a modal if it is.
+   * @param event The mouse event triggered by clicking the link.
+   * @param url The URL of the link being clicked.
+   */
+  openLink(event: MouseEvent, url: string): void {
+    if (this.isImage(url)) {
+      event.preventDefault();
+      this.selectedImage = url;
+    }
+  }
+
+  closeModal(): void {
+    this.selectedImage = null;
+  }
 }
