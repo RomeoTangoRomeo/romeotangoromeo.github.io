@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { SiteNavComponent } from './components/site-nav.component';
-import { HeroComponent } from './components/hero.component';
-import { AboutComponent } from './components/about.component';
-import { GrowingComponent } from './components/growing.component';
-import { JournalComponent } from './components/journal.component';
-import { SiteFooterComponent } from './components/site-footer.component';
+import { SiteNavComponent } from './components/site-nav/site-nav.component';
+import { HeroComponent } from './components/hero/hero.component';
+import { AboutComponent } from './components/about/about.component';
+import { GrowingComponent } from './components/growing/growing.component';
+import { JournalComponent } from './components/journal/journal.component';
+import { SiteFooterComponent } from './components/site-footer/site-footer.component';
 
 @Component({
   selector: 'app-root',
