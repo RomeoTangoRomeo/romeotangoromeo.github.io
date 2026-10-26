@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 
 interface Note {
@@ -33,6 +33,7 @@ interface Note {
       </div>
     </section>
     `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     styles: [
         `
       .journal {

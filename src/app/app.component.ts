@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SiteNavComponent } from './components/site-nav/site-nav.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { AboutComponent } from './components/about/about.component';
@@ -27,6 +27,7 @@ import { SiteFooterComponent } from './components/site-footer/site-footer.compon
     </main>
     <app-site-footer />
   `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     styles: [
         `
       :host {

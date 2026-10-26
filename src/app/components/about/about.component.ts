@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 
 interface Interest {
@@ -32,6 +32,7 @@ interface Interest {
       </div>
     </section>
     `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     styles: [
         `
       .about {

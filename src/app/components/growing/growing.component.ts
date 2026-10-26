@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 
 interface Project {
@@ -71,6 +71,7 @@ interface Project {
     }
     
     `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     styles: [
         `
       .growing {
