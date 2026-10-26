@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
 
 interface Project {
   name: string;
@@ -9,10 +9,9 @@ interface Project {
 }
 
 @Component({
-  selector: 'app-growing',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-growing',
+    imports: [],
+    template: `
     <section id="growing" class="growing">
       <div class="container">
         <div class="grid">
@@ -30,48 +29,51 @@ interface Project {
               height="480"
               loading="lazy"
               decoding="async"
-            />
+              />
           </aside>
-
+    
           <ul class="beds">
-            <li class="bed" *ngFor="let p of projects">
-              <div class="bed-top">
-                <span class="stage" [attr.data-stage]="p.stage">{{ p.stage }}</span>
-              </div>
-              <h3>{{ p.name }}</h3>
-              <p>{{ p.blurb }}</p>
-              @if (p.link) {
-                <a
-                  [href]="p.link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  (click)="openLink($event, p.link)"
-                >
-                  View Project
-                </a>
-              }
-            </li>
-          </ul>          
+            @for (p of projects; track p) {
+              <li class="bed">
+                <div class="bed-top">
+                  <span class="stage" [attr.data-stage]="p.stage">{{ p.stage }}</span>
+                </div>
+                <h3>{{ p.name }}</h3>
+                <p>{{ p.blurb }}</p>
+                @if (p.link) {
+                  <a
+                    [href]="p.link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    (click)="openLink($event, p.link)"
+                    >
+                    View Project
+                  </a>
+                }
+              </li>
+            }
+          </ul>
         </div>
       </div>
     </section>
-
+    
     @if (selectedImage) {
-  <div class="image-modal-backdrop" (click)="closeModal()">
-    <div class="image-modal-content" (click)="$event.stopPropagation()">
-      <button class="image-modal-close-button" (click)="closeModal()">×</button>
-
-      <img
-        [src]="selectedImage"
-        alt="Image preview"
-      />
-    </div>
-  </div>
-}
-          
-  `,
-  styles: [
-    `
+      <div class="image-modal-backdrop" (click)="closeModal()">
+        <div class="image-modal-content" (click)="$event.stopPropagation()">
+          <button class="image-modal-close-button" (click)="closeModal()">×</button>
+    
+          <img
+            [src]="selectedImage"
+            alt="Image preview"
+            />
+        </div>
+      </div>
+    }
+    
+    `,
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styles: [
+        `
       .growing {
         padding-block: clamp(48px, 7vw, 96px);
         background: linear-gradient(180deg, transparent, rgba(110, 123, 82, 0.06));
@@ -206,7 +208,7 @@ interface Project {
         cursor: pointer;
       }
     `,
-  ],
+    ]
 })
 export class GrowingComponent {
   // Stuff I'm workin on goes here

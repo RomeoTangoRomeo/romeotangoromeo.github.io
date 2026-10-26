@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-site-footer',
@@ -28,6 +28,7 @@ import { Component } from '@angular/core';
       </div>
     </footer>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .footer {
