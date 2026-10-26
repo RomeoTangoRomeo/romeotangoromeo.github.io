@@ -9,10 +9,9 @@ interface Project {
 }
 
 @Component({
-  selector: 'app-growing',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-growing',
+    imports: [CommonModule],
+    template: `
     <section id="growing" class="growing">
       <div class="container">
         <div class="grid">
@@ -70,8 +69,8 @@ interface Project {
 }
           
   `,
-  styles: [
-    `
+    styles: [
+        `
       .growing {
         padding-block: clamp(48px, 7vw, 96px);
         background: linear-gradient(180deg, transparent, rgba(110, 123, 82, 0.06));
@@ -206,7 +205,7 @@ interface Project {
         cursor: pointer;
       }
     `,
-  ],
+    ]
 })
 export class GrowingComponent {
   // Stuff I'm workin on goes here

@@ -8,10 +8,9 @@ interface Note {
 }
 
 @Component({
-  selector: 'app-journal',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-journal',
+    imports: [CommonModule],
+    template: `
     <section id="journal" class="journal">
       <div class="container">
         <span class="eyebrow">Garden notes</span>
@@ -32,8 +31,8 @@ interface Note {
       </div>
     </section>
   `,
-  styles: [
-    `
+    styles: [
+        `
       .journal {
         padding-block: clamp(48px, 7vw, 96px);
       }
@@ -81,7 +80,7 @@ interface Note {
         }
       }
     `,
-  ],
+    ]
 })
 export class JournalComponent {
     notes: Note[] = [

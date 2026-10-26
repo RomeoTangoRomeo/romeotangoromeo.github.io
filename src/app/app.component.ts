@@ -7,17 +7,16 @@ import { JournalComponent } from './components/journal/journal.component';
 import { SiteFooterComponent } from './components/site-footer/site-footer.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    SiteNavComponent,
-    HeroComponent,
-    AboutComponent,
-    GrowingComponent,
-    JournalComponent,
-    SiteFooterComponent,
-  ],
-  template: `
+    selector: 'app-root',
+    imports: [
+        SiteNavComponent,
+        HeroComponent,
+        AboutComponent,
+        GrowingComponent,
+        JournalComponent,
+        SiteFooterComponent,
+    ],
+    template: `
     <a class="skip-link" href="#main">Skip to content</a>
     <app-site-nav />
     <main id="main">
@@ -28,8 +27,8 @@ import { SiteFooterComponent } from './components/site-footer/site-footer.compon
     </main>
     <app-site-footer />
   `,
-  styles: [
-    `
+    styles: [
+        `
       :host {
         display: block;
       }
@@ -47,6 +46,6 @@ import { SiteFooterComponent } from './components/site-footer/site-footer.compon
         left: 0;
       }
     `,
-  ],
+    ]
 })
 export class AppComponent {}

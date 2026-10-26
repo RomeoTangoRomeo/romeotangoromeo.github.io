@@ -7,10 +7,9 @@ interface Interest {
 }
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-about',
+    imports: [CommonModule],
+    template: `
     <section id="about" class="about">
       <div class="container">
         <span class="eyebrow">A little about me</span>
@@ -31,8 +30,8 @@ interface Interest {
       </div>
     </section>
   `,
-  styles: [
-    `
+    styles: [
+        `
       .about {
         padding-block: clamp(48px, 7vw, 96px);
       }
@@ -112,7 +111,7 @@ interface Interest {
         }
       }
     `,
-  ],
+    ]
 })
 export class AboutComponent {  
   interests: Interest[] = [
