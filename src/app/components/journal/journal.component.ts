@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 interface Note {
   date: string;
@@ -9,7 +9,7 @@ interface Note {
 
 @Component({
     selector: 'app-journal',
-    imports: [CommonModule],
+    imports: [],
     template: `
     <section id="journal" class="journal">
       <div class="container">
@@ -20,17 +20,19 @@ interface Note {
           Stuff I've been working on
         </p>
         <ol class="notes">
-          <li class="note" *ngFor="let n of notes">
-            <time class="date">{{ n.date }}</time>
-            <div class="note-body">
-              <h3>{{ n.title }}</h3>
-              <p>{{ n.body }}</p>
-            </div>
-          </li>
+          @for (n of notes; track n) {
+            <li class="note">
+              <time class="date">{{ n.date }}</time>
+              <div class="note-body">
+                <h3>{{ n.title }}</h3>
+                <p>{{ n.body }}</p>
+              </div>
+            </li>
+          }
         </ol>
       </div>
     </section>
-  `,
+    `,
     styles: [
         `
       .journal {

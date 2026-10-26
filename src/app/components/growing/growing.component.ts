@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 interface Project {
   name: string;
@@ -10,7 +10,7 @@ interface Project {
 
 @Component({
     selector: 'app-growing',
-    imports: [CommonModule],
+    imports: [],
     template: `
     <section id="growing" class="growing">
       <div class="container">
@@ -29,46 +29,48 @@ interface Project {
               height="480"
               loading="lazy"
               decoding="async"
-            />
+              />
           </aside>
-
+    
           <ul class="beds">
-            <li class="bed" *ngFor="let p of projects">
-              <div class="bed-top">
-                <span class="stage" [attr.data-stage]="p.stage">{{ p.stage }}</span>
-              </div>
-              <h3>{{ p.name }}</h3>
-              <p>{{ p.blurb }}</p>
-              @if (p.link) {
-                <a
-                  [href]="p.link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  (click)="openLink($event, p.link)"
-                >
-                  View Project
-                </a>
-              }
-            </li>
-          </ul>          
+            @for (p of projects; track p) {
+              <li class="bed">
+                <div class="bed-top">
+                  <span class="stage" [attr.data-stage]="p.stage">{{ p.stage }}</span>
+                </div>
+                <h3>{{ p.name }}</h3>
+                <p>{{ p.blurb }}</p>
+                @if (p.link) {
+                  <a
+                    [href]="p.link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    (click)="openLink($event, p.link)"
+                    >
+                    View Project
+                  </a>
+                }
+              </li>
+            }
+          </ul>
         </div>
       </div>
     </section>
-
+    
     @if (selectedImage) {
-  <div class="image-modal-backdrop" (click)="closeModal()">
-    <div class="image-modal-content" (click)="$event.stopPropagation()">
-      <button class="image-modal-close-button" (click)="closeModal()">×</button>
-
-      <img
-        [src]="selectedImage"
-        alt="Image preview"
-      />
-    </div>
-  </div>
-}
-          
-  `,
+      <div class="image-modal-backdrop" (click)="closeModal()">
+        <div class="image-modal-content" (click)="$event.stopPropagation()">
+          <button class="image-modal-close-button" (click)="closeModal()">×</button>
+    
+          <img
+            [src]="selectedImage"
+            alt="Image preview"
+            />
+        </div>
+      </div>
+    }
+    
+    `,
     styles: [
         `
       .growing {

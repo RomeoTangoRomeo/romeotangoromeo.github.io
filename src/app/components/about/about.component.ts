@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 interface Interest {
   title: string;
@@ -8,28 +8,30 @@ interface Interest {
 
 @Component({
     selector: 'app-about',
-    imports: [CommonModule],
+    imports: [],
     template: `
     <section id="about" class="about">
       <div class="container">
         <span class="eyebrow">A little about me</span>
-        <div class="head">          
+        <div class="head">
           <h2>I like tending to things &mdash; gardens, ideas, and everything in between.</h2>
           <p>
-          I'm a software developer based out of Kentucky with 7+ years of experience designing, maintaining and supporting enterprise web applications. I've got extensive experience with Java, Spring MVC, JSP, SQL, Git, Maven, and automated testing. I enjoy learning how things are done and exploring to see whether or not I can improve upon them through hands-on implementatation. The best way to learn something new is to roll up your sleeves and get your hands a little dirty!
+            I'm a software developer based out of Kentucky with 7+ years of experience designing, maintaining and supporting enterprise web applications. I've got extensive experience with Java, Spring MVC, JSP, SQL, Git, Maven, and automated testing. I enjoy learning how things are done and exploring to see whether or not I can improve upon them through hands-on implementatation. The best way to learn something new is to roll up your sleeves and get your hands a little dirty!
           </p>
         </div>
-
+    
         <ul class="plots">
-          <li class="plot" *ngFor="let item of interests">
-            <span class="sprout" aria-hidden="true"></span>
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.body }}</p>
-          </li>
+          @for (item of interests; track item) {
+            <li class="plot">
+              <span class="sprout" aria-hidden="true"></span>
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.body }}</p>
+            </li>
+          }
         </ul>
       </div>
     </section>
-  `,
+    `,
     styles: [
         `
       .about {
